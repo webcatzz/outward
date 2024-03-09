@@ -1,0 +1,417 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://assets/puddle_sky.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/next.png" type="Texture" id=2]
+[ext_resource path="res://assets/watch.png" type="Texture" id=3]
+[ext_resource path="res://tech/default_old/Watch.gd" type="Script" id=4]
+[ext_resource path="res://tech/default_old/Dialogue.gd" type="Script" id=5]
+[ext_resource path="res://tech/default_old/main.tres" type="Theme" id=6]
+[ext_resource path="res://tech/default_old/Controls.gd" type="Script" id=7]
+[ext_resource path="res://music/clock_ticking.wav" type="AudioStream" id=8]
+[ext_resource path="res://tech/default_old/Main.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel/Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel/Background:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fade"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel/Background:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.352941, 0.411765, 0.533333, 1 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, 88 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ticking:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "pull"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 88 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ticking:volume_db")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
+}
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 520, 158 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "float"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 522, 160 ), Vector2( 522, 156 ), Vector2( 522, 160 ) ]
+}
+
+[node name="Main" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 9 )
+
+[node name="Margins" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Squarer" type="AspectRatioContainer" parent="Margins"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 784.0
+margin_bottom = 584.0
+
+[node name="Separator" type="VBoxContainer" parent="Margins/Squarer"]
+margin_left = 100.0
+margin_right = 668.0
+margin_bottom = 568.0
+
+[node name="Display" type="Control" parent="Margins/Squarer/Separator"]
+margin_right = 568.0
+margin_bottom = 362.0
+rect_clip_content = true
+size_flags_vertical = 3
+
+[node name="Panel" type="PanelContainer" parent="Margins/Squarer/Separator/Display"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="TextureRect" parent="Margins/Squarer/Separator/Display/Panel"]
+margin_right = 568.0
+margin_bottom = 362.0
+texture = ExtResource( 1 )
+stretch_mode = 6
+
+[node name="Animator" type="AnimationPlayer" parent="Margins/Squarer/Separator/Display"]
+anims/RESET = SubResource( 4 )
+anims/fade = SubResource( 5 )
+
+[node name="Watch" type="Control" parent="Margins/Squarer/Separator/Display"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -88.0
+margin_top = -88.0
+script = ExtResource( 4 )
+
+[node name="Sprite" type="TextureRect" parent="Margins/Squarer/Separator/Display/Watch"]
+margin_left = 16.0
+margin_top = 88.0
+margin_right = 188.0
+margin_bottom = 302.0
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="Minutes" type="Panel" parent="Margins/Squarer/Separator/Display/Watch/Sprite"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1.0
+margin_top = -28.0
+margin_right = 1.0
+rect_pivot_offset = Vector2( 1, 28 )
+custom_styles/panel = SubResource( 8 )
+
+[node name="Hours" type="Panel" parent="Margins/Squarer/Separator/Display/Watch/Sprite"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1.0
+margin_top = -15.0
+margin_right = 1.0
+rect_rotation = 330.0
+rect_pivot_offset = Vector2( 1, 15 )
+custom_styles/panel = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="Margins/Squarer/Separator/Display/Watch"]
+autostart = true
+
+[node name="Ticking" type="AudioStreamPlayer" parent="Margins/Squarer/Separator/Display/Watch"]
+stream = ExtResource( 8 )
+
+[node name="Animator" type="AnimationPlayer" parent="Margins/Squarer/Separator/Display/Watch"]
+anims/RESET = SubResource( 6 )
+anims/pull = SubResource( 7 )
+
+[node name="Controls" type="MarginContainer" parent="Margins/Squarer/Separator"]
+margin_top = 366.0
+margin_right = 568.0
+margin_bottom = 568.0
+rect_min_size = Vector2( 0, 202 )
+script = ExtResource( 7 )
+
+[node name="Grids" type="CenterContainer" parent="Margins/Squarer/Separator/Controls"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 552.0
+margin_bottom = 186.0
+
+[node name="Movement" type="GridContainer" parent="Margins/Squarer/Separator/Controls/Grids"]
+margin_left = 49.0
+margin_right = 487.0
+margin_bottom = 170.0
+columns = 3
+
+[node name="Northwest" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Movement"]
+margin_right = 138.0
+margin_bottom = 14.0
+text = "go forerightward..."
+align = 0
+
+[node name="North" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Movement"]
+margin_left = 170.0
+margin_right = 272.0
+margin_bottom = 14.0
+text = "go forward..."
+
+[node name="Northeast" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Movement"]
+margin_left = 304.0
+margin_right = 438.0
+margin_bottom = 14.0
+text = "go foreleftward..."
+align = 2
+
+[node name="West" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Movement"]
+margin_top = 78.0
+margin_right = 138.0
+margin_bottom = 92.0
+text = "go rightward..."
+align = 0
+
+[node name="Act" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Movement"]
+margin_left = 170.0
+margin_top = 78.0
+margin_right = 272.0
+margin_bottom = 92.0
+text = "act..."
+
+[node name="East" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Movement"]
+margin_left = 304.0
+margin_top = 78.0
+margin_right = 438.0
+margin_bottom = 92.0
+text = "go leftward..."
+align = 2
+
+[node name="Southwest" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Movement"]
+margin_top = 156.0
+margin_right = 138.0
+margin_bottom = 170.0
+text = "go backrightward..."
+align = 0
+
+[node name="South" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Movement"]
+margin_left = 170.0
+margin_top = 156.0
+margin_right = 272.0
+margin_bottom = 170.0
+text = "go backward..."
+
+[node name="Southeast" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Movement"]
+margin_left = 304.0
+margin_top = 156.0
+margin_right = 438.0
+margin_bottom = 170.0
+text = "go backleftward..."
+align = 2
+
+[node name="Actions" type="GridContainer" parent="Margins/Squarer/Separator/Controls/Grids"]
+visible = false
+margin_left = 246.0
+margin_top = 78.0
+margin_right = 290.0
+margin_bottom = 92.0
+columns = 3
+
+[node name="Move" type="Button" parent="Margins/Squarer/Separator/Controls/Grids/Actions"]
+margin_right = 44.0
+margin_bottom = 14.0
+text = "move..."
+align = 0
+
+[node name="Dialogue" type="RichTextLabel" parent="Margins/Squarer/Separator/Controls"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 552.0
+margin_bottom = 186.0
+custom_styles/normal = SubResource( 1 )
+bbcode_enabled = true
+scroll_active = false
+script = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="Margins/Squarer/Separator/Controls/Dialogue"]
+
+[node name="Animator" type="AnimationPlayer" parent="Margins/Squarer/Separator/Controls/Dialogue"]
+anims/RESET = SubResource( 2 )
+anims/fade = SubResource( 3 )
+
+[node name="Next" type="TextureRect" parent="Margins/Squarer/Separator/Controls/Dialogue"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.0
+margin_top = -12.0
+margin_right = -9.0
+margin_bottom = -7.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Animator" type="AnimationPlayer" parent="Margins/Squarer/Separator/Controls/Dialogue/Next"]
+autoplay = "float"
+anims/RESET = SubResource( 9 )
+anims/float = SubResource( 10 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+
+[connection signal="timeout" from="Margins/Squarer/Separator/Display/Watch/Timer" to="Margins/Squarer/Separator/Display/Watch" method="every_minute"]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Movement/Northwest" to="." method="move" binds= [ "northwest" ]]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Movement/North" to="." method="move" binds= [ "north" ]]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Movement/Northeast" to="." method="move" binds= [ "northeast" ]]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Movement/West" to="." method="move" binds= [ "west" ]]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Movement/Act" to="Margins/Squarer/Separator/Controls" method="switch_panel" binds= [ "actions" ]]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Movement/East" to="." method="move" binds= [ "east" ]]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Movement/Southwest" to="." method="move" binds= [ "southwest" ]]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Movement/South" to="." method="move" binds= [ "south" ]]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Movement/Southeast" to="." method="move" binds= [ "southeast" ]]
+[connection signal="pressed" from="Margins/Squarer/Separator/Controls/Grids/Actions/Move" to="Margins/Squarer/Separator/Controls" method="switch_panel" binds= [ "movement" ]]

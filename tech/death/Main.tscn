@@ -1,0 +1,153 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tech/theme.tres" type="Theme" id=1]
+[ext_resource path="res://music/lost.mp3" type="AudioStream" id=2]
+[ext_resource path="res://tech/death/Main.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Music:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Container:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "ready"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Music:pitch_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.1, 0.6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flash:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Container:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Root" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 6 )
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -135.0
+margin_right = 135.0
+custom_constants/separation = 48
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container"]
+margin_top = 225.0
+margin_right = 270.0
+margin_bottom = 293.0
+custom_colors/font_color_shadow = Color( 1, 1, 1, 0.25 )
+custom_constants/line_separation = 16
+custom_constants/shadow_as_outline = 1
+bbcode_enabled = true
+bbcode_text = "[center][shake rate=5 level=6]Your connection to this world
+Has been severed[/shake][/center]"
+text = "Your connection to this world
+Has been severed"
+fit_content_height = true
+
+[node name="Buttons" type="HBoxContainer" parent="Container"]
+margin_top = 341.0
+margin_right = 270.0
+margin_bottom = 375.0
+custom_constants/separation = 16
+
+[node name="Quit" type="Button" parent="Container/Buttons"]
+margin_right = 127.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "cease"
+
+[node name="Continue" type="Button" parent="Container/Buttons"]
+margin_left = 143.0
+margin_right = 270.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "continue"
+
+[node name="Flash" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 0, 0, 1 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+pitch_scale = 0.1
+autoplay = true
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+autoplay = "ready"
+anims/RESET = SubResource( 1 )
+anims/ready = SubResource( 2 )
+
+[connection signal="pressed" from="Container/Buttons/Quit" to="." method="on_quit"]
+[connection signal="pressed" from="Container/Buttons/Continue" to="." method="on_continue"]

@@ -1,0 +1,225 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/default.png" type="Texture" id=1]
+[ext_resource path="res://tech/battle/PartyMember.gd" type="Script" id=2]
+[ext_resource path="res://tech/theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/ui/next.png" type="Texture" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 2
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Separator/Info/Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Separator/Info/Icon:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Separator/Info/Icon:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Separator/Health/Meter:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "heal"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Separator/Info/Icon:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.75, 1.5 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Separator/Info/Icon:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Separator/Health/Meter:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Separator/Info/Icon:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4, 0 ), Vector2( 0, 0 ), Vector2( 4, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Separator/Info/Icon:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Separator/Health/Meter:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="PartyMember" type="MarginContainer"]
+margin_right = 100.0
+margin_bottom = 74.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource( 3 )
+custom_constants/margin_right = 32
+custom_constants/margin_top = 16
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 16
+script = ExtResource( 2 )
+
+[node name="Separator" type="VBoxContainer" parent="."]
+margin_left = 32.0
+margin_top = 16.0
+margin_right = 130.0
+margin_bottom = 92.0
+custom_constants/separation = 8
+
+[node name="Info" type="HBoxContainer" parent="Separator"]
+margin_right = 98.0
+margin_bottom = 48.0
+custom_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="Separator/Info"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+rect_pivot_offset = Vector2( 24, 24 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Separator" type="VBoxContainer" parent="Separator/Info"]
+margin_left = 56.0
+margin_right = 98.0
+margin_bottom = 48.0
+custom_constants/separation = 4
+alignment = 1
+
+[node name="Name" type="Label" parent="Separator/Info/Separator"]
+margin_top = 4.0
+margin_right = 42.0
+margin_bottom = 22.0
+text = "name"
+
+[node name="Level" type="Label" parent="Separator/Info/Separator"]
+margin_top = 26.0
+margin_right = 42.0
+margin_bottom = 44.0
+text = "lv. ?"
+
+[node name="Health" type="PanelContainer" parent="Separator"]
+margin_top = 56.0
+margin_right = 98.0
+margin_bottom = 76.0
+
+[node name="Meter" type="ProgressBar" parent="Separator/Health"]
+margin_right = 98.0
+margin_bottom = 20.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.5, 0.5, 0.5, 1 )
+step = 1.0
+value = 100.0
+
+[node name="Label" type="Label" parent="Separator/Health"]
+material = SubResource( 2 )
+margin_top = 1.0
+margin_right = 98.0
+margin_bottom = 19.0
+text = "rslv"
+valign = 1
+percent_visible = 0.0
+
+[node name="Arrow" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+playback_speed = 1.5
+anims/RESET = SubResource( 3 )
+anims/heal = SubResource( 5 )
+anims/hurt = SubResource( 4 )

@@ -1,0 +1,492 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://tech/theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/locations/puddle_sky.png" type="Texture" id=2]
+[ext_resource path="res://assets/title.png" type="Texture" id=3]
+[ext_resource path="res://tech/title/Title.gd" type="Script" id=4]
+[ext_resource path="res://tech/title/planet.tres" type="Texture" id=5]
+[ext_resource path="res://tech/title/Tabs.gd" type="Script" id=6]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="StyleBoxTexture" id=6]
+content_margin_left = 48.0
+content_margin_right = 48.0
+content_margin_top = 48.0
+content_margin_bottom = 48.0
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 800, 400 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "rotate_left"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -45.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "rotate_right"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 45.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Separator/Main:size_flags_stretch_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Separator/Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.1, 0.1, 0.1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Separator/Main:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "enter_name"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.1, 0.1, 0.1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Separator/Main:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "start"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Separator/Main:size_flags_stretch_ratio")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Separator/Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Control" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color( 0.1, 0.1, 0.1, 1 )
+material = SubResource( 1 )
+margin_right = 800.0
+margin_bottom = 600.0
+texture = ExtResource( 2 )
+stretch_mode = 7
+
+[node name="Tip" type="MarginContainer" parent="."]
+margin_right = 800.0
+margin_bottom = 600.0
+custom_constants/margin_bottom = 32
+
+[node name="Label" type="RichTextLabel" parent="Tip"]
+modulate = Color( 1, 1, 1, 0.5 )
+margin_top = 546.0
+margin_right = 800.0
+margin_bottom = 568.0
+size_flags_vertical = 8
+bbcode_enabled = true
+bbcode_text = "[center][wave]click to start.[/wave][/center]"
+text = "click to start."
+fit_content_height = true
+
+[node name="Separator" type="VBoxContainer" parent="."]
+margin_right = 800.0
+margin_bottom = 600.0
+
+[node name="Title" type="TextureRect" parent="Separator"]
+margin_left = 305.0
+margin_top = 33.0
+margin_right = 494.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 189, 84 )
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource( 3 )
+stretch_mode = 1
+
+[node name="Main" type="PanelContainer" parent="Separator"]
+margin_top = 150.0
+margin_right = 800.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 450 )
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Tabs" type="TabContainer" parent="Separator/Main"]
+margin_left = 275.0
+margin_top = 48.0
+margin_right = 525.0
+margin_bottom = 402.0
+rect_min_size = Vector2( 250, 0 )
+rect_pivot_offset = Vector2( 125, 1000 )
+size_flags_horizontal = 4
+theme_type_variation = "HiddenTabContainer"
+tabs_visible = false
+script = ExtResource( 6 )
+
+[node name="Default" type="VBoxContainer" parent="Separator/Main/Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Play" type="Button" parent="Separator/Main/Tabs/Default"]
+margin_right = 250.0
+margin_bottom = 34.0
+text = "start game"
+
+[node name="Settings" type="Button" parent="Separator/Main/Tabs/Default"]
+margin_top = 50.0
+margin_right = 250.0
+margin_bottom = 84.0
+text = "configure"
+
+[node name="Exit" type="Button" parent="Separator/Main/Tabs/Default"]
+margin_top = 100.0
+margin_right = 250.0
+margin_bottom = 134.0
+text = "cease"
+
+[node name="Divider" type="HSeparator" parent="Separator/Main/Tabs/Default"]
+margin_top = 150.0
+margin_right = 250.0
+margin_bottom = 166.0
+
+[node name="Demo" type="Label" parent="Separator/Main/Tabs/Default"]
+margin_top = 182.0
+margin_right = 250.0
+margin_bottom = 200.0
+text = "demo stuffz O_o"
+align = 1
+
+[node name="Battle" type="Button" parent="Separator/Main/Tabs/Default"]
+margin_top = 216.0
+margin_right = 250.0
+margin_bottom = 250.0
+text = "battle screen"
+
+[node name="Settings" type="VBoxContainer" parent="Separator/Main/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 16
+
+[node name="Label" type="Label" parent="Separator/Main/Tabs/Settings"]
+margin_right = 250.0
+margin_bottom = 18.0
+text = "Change the world itself."
+align = 1
+
+[node name="Divider" type="HSeparator" parent="Separator/Main/Tabs/Settings"]
+margin_top = 34.0
+margin_right = 250.0
+margin_bottom = 50.0
+
+[node name="Options" type="GridContainer" parent="Separator/Main/Tabs/Settings"]
+margin_top = 66.0
+margin_right = 250.0
+margin_bottom = 118.0
+custom_constants/vseparation = 16
+custom_constants/hseparation = 16
+columns = 2
+
+[node name="VolumeLabel" type="Label" parent="Separator/Main/Tabs/Settings/Options"]
+margin_right = 88.0
+margin_bottom = 18.0
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="Separator/Main/Tabs/Settings/Options"]
+margin_left = 104.0
+margin_right = 250.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+
+[node name="SaturationLabel" type="Label" parent="Separator/Main/Tabs/Settings/Options"]
+margin_top = 34.0
+margin_right = 88.0
+margin_bottom = 52.0
+text = "Saturation"
+
+[node name="SaturationSlider" type="HSlider" parent="Separator/Main/Tabs/Settings/Options"]
+margin_left = 104.0
+margin_top = 34.0
+margin_right = 250.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="Divider2" type="HSeparator" parent="Separator/Main/Tabs/Settings"]
+visible = false
+margin_top = 110.0
+margin_right = 220.0
+margin_bottom = 126.0
+
+[node name="Restart" type="Button" parent="Separator/Main/Tabs/Settings"]
+modulate = Color( 0.619608, 0.156863, 0.207843, 1 )
+margin_top = 134.0
+margin_right = 250.0
+margin_bottom = 168.0
+text = "delete saved data...?"
+
+[node name="Confirmation" type="ConfirmationDialog" parent="Separator/Main/Tabs/Settings/Restart"]
+modulate = Color( 0.619608, 0.156863, 0.207843, 1 )
+margin_top = 94.0
+margin_right = 400.0
+margin_bottom = 234.0
+rect_min_size = Vector2( 400, 140 )
+popup_exclusive = true
+window_title = ""
+dialog_text = "Are you sure?"
+
+[node name="Divider3" type="HSeparator" parent="Separator/Main/Tabs/Settings"]
+visible = false
+margin_top = 152.0
+margin_right = 220.0
+margin_bottom = 168.0
+
+[node name="Back" type="Button" parent="Separator/Main/Tabs/Settings"]
+margin_top = 184.0
+margin_right = 250.0
+margin_bottom = 218.0
+text = "return...?"
+
+[node name="Name" type="TabContainer" parent="Separator/Main/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_type_variation = "HiddenTabContainer"
+tabs_visible = false
+
+[node name="Input" type="VBoxContainer" parent="Separator/Main/Tabs/Name"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Separator/Main/Tabs/Name/Input"]
+margin_top = 165.0
+margin_right = 250.0
+margin_bottom = 188.0
+align = 1
+placeholder_text = "Then enter your name."
+placeholder_alpha = 0.5
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Confirmation" type="VBoxContainer" parent="Separator/Main/Tabs/Name"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_type_variation = "SpacedVBoxContainer"
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="Separator/Main/Tabs/Name/Confirmation"]
+margin_top = 166.0
+margin_right = 250.0
+margin_bottom = 188.0
+theme_type_variation = "HiddenRichTextLabel"
+bbcode_enabled = true
+text = "nameis ok ?"
+fit_content_height = true
+
+[node name="Buttons" type="HBoxContainer" parent="Separator/Main/Tabs/Name/Confirmation"]
+margin_top = 179.0
+margin_right = 250.0
+margin_bottom = 213.0
+custom_constants/separation = 16
+
+[node name="Yes" type="Button" parent="Separator/Main/Tabs/Name/Confirmation/Buttons"]
+margin_right = 117.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "yes"
+
+[node name="No" type="Button" parent="Separator/Main/Tabs/Name/Confirmation/Buttons"]
+margin_left = 133.0
+margin_right = 250.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "no"
+
+[node name="OK" type="Label" parent="Separator/Main/Tabs/Name"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Then so it shall be."
+align = 1
+valign = 1
+
+[node name="Animator" type="AnimationPlayer" parent="Separator/Main/Tabs"]
+anims/RESET = SubResource( 8 )
+anims/rotate_left = SubResource( 9 )
+anims/rotate_right = SubResource( 10 )
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/enter_name = SubResource( 7 )
+anims/start = SubResource( 5 )
+
+[connection signal="pressed" from="Separator/Main/Tabs/Default/Play" to="." method="play"]
+[connection signal="pressed" from="Separator/Main/Tabs/Default/Settings" to="." method="switch_to_settings"]
+[connection signal="pressed" from="Separator/Main/Tabs/Default/Exit" to="." method="exit"]
+[connection signal="pressed" from="Separator/Main/Tabs/Default/Battle" to="." method="switch_to_battle"]
+[connection signal="value_changed" from="Separator/Main/Tabs/Settings/Options/VolumeSlider" to="." method="set_volume"]
+[connection signal="value_changed" from="Separator/Main/Tabs/Settings/Options/SaturationSlider" to="." method="set_saturation"]
+[connection signal="pressed" from="Separator/Main/Tabs/Settings/Restart" to="." method="request_delete_data"]
+[connection signal="confirmed" from="Separator/Main/Tabs/Settings/Restart/Confirmation" to="." method="delete_data"]
+[connection signal="pressed" from="Separator/Main/Tabs/Settings/Back" to="." method="close_settings"]
+[connection signal="text_entered" from="Separator/Main/Tabs/Name/Input/LineEdit" to="." method="on_name_input"]
+[connection signal="pressed" from="Separator/Main/Tabs/Name/Confirmation/Buttons/Yes" to="." method="on_name_confirm"]
+[connection signal="pressed" from="Separator/Main/Tabs/Name/Confirmation/Buttons/No" to="." method="on_name_denied"]

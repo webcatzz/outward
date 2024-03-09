@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://data/player/player.gd" type="Script" id=1]
+[ext_resource path="res://data/items/key.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Player"
+level = 1
+health = 100
+party = [ {
+"health": 20,
+"level": 2,
+"max_health": 20,
+"name": "Beetle"
+} ]
+inventory = [ ExtResource( 2 ) ]
+location = "puddle"
+visited_locations = PoolStringArray(  )
+volume = 1.0
+saturation = 1.0

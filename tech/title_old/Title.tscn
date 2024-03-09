@@ -1,0 +1,356 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/locations/puddle_sky.png" type="Texture" id=1]
+[ext_resource path="res://tech/theme.tres" type="Theme" id=2]
+[ext_resource path="res://tech/title_old/Title.gd" type="Script" id=4]
+[ext_resource path="res://assets/title.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "fade_out"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Root" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Separator" type="VBoxContainer" parent="."]
+margin_right = 800.0
+margin_bottom = 600.0
+custom_constants/separation = 0
+
+[node name="Title" type="PanelContainer" parent="Separator"]
+margin_right = 800.0
+margin_bottom = 150.0
+rect_clip_content = true
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Texture" type="TextureRect" parent="Separator/Title"]
+margin_right = 800.0
+margin_bottom = 150.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+
+[node name="Margins" type="MarginContainer" parent="Separator/Title"]
+margin_right = 800.0
+margin_bottom = 150.0
+custom_constants/margin_bottom = 16
+
+[node name="Centerer" type="VBoxContainer" parent="Separator/Title/Margins"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 784.0
+margin_bottom = 134.0
+alignment = 2
+
+[node name="Sprite" type="TextureRect" parent="Separator/Title/Margins/Centerer"]
+margin_top = 34.0
+margin_right = 768.0
+margin_bottom = 118.0
+texture = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="Buttons" type="PanelContainer" parent="Separator"]
+margin_top = 150.0
+margin_right = 800.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="Margins" type="MarginContainer" parent="Separator/Buttons"]
+margin_right = 800.0
+margin_bottom = 450.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="Centerer" type="HBoxContainer" parent="Separator/Buttons/Margins"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 784.0
+margin_bottom = 434.0
+alignment = 1
+
+[node name="Tabs" type="TabContainer" parent="Separator/Buttons/Margins/Centerer"]
+margin_left = 240.0
+margin_right = 528.0
+margin_bottom = 418.0
+rect_min_size = Vector2( 250, 0 )
+theme_type_variation = "HiddenTabContainer"
+tabs_visible = false
+
+[node name="Default" type="VBoxContainer" parent="Separator/Buttons/Margins/Centerer/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Play" type="Button" parent="Separator/Buttons/Margins/Centerer/Tabs/Default"]
+margin_right = 250.0
+margin_bottom = 34.0
+text = "begin...?"
+
+[node name="Settings" type="Button" parent="Separator/Buttons/Margins/Centerer/Tabs/Default"]
+margin_top = 42.0
+margin_right = 250.0
+margin_bottom = 76.0
+text = "configure."
+
+[node name="Quit" type="Button" parent="Separator/Buttons/Margins/Centerer/Tabs/Default"]
+margin_top = 84.0
+margin_right = 250.0
+margin_bottom = 118.0
+text = "cease."
+
+[node name="Divider" type="HSeparator" parent="Separator/Buttons/Margins/Centerer/Tabs/Default"]
+margin_top = 126.0
+margin_right = 250.0
+margin_bottom = 142.0
+
+[node name="Demo" type="Label" parent="Separator/Buttons/Margins/Centerer/Tabs/Default"]
+margin_top = 150.0
+margin_right = 250.0
+margin_bottom = 168.0
+text = "demo stuffz O_o"
+align = 1
+
+[node name="Battle" type="Button" parent="Separator/Buttons/Margins/Centerer/Tabs/Default"]
+margin_top = 176.0
+margin_right = 250.0
+margin_bottom = 210.0
+text = "battle screen"
+
+[node name="Settings" type="VBoxContainer" parent="Separator/Buttons/Margins/Centerer/Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_right = 288.0
+margin_bottom = 18.0
+text = "Change the world itself."
+align = 1
+
+[node name="Divider" type="HSeparator" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_top = 34.0
+margin_right = 288.0
+margin_bottom = 50.0
+
+[node name="Options" type="GridContainer" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_top = 66.0
+margin_right = 288.0
+margin_bottom = 118.0
+columns = 2
+
+[node name="VolumeLabel" type="Label" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings/Options"]
+margin_right = 88.0
+margin_bottom = 18.0
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings/Options"]
+margin_left = 104.0
+margin_right = 288.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+min_value = -80.0
+max_value = 0.0
+
+[node name="SaturationLabel" type="Label" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings/Options"]
+margin_top = 34.0
+margin_right = 88.0
+margin_bottom = 52.0
+text = "Saturation"
+
+[node name="SaturationSlider" type="HSlider" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings/Options"]
+margin_left = 104.0
+margin_top = 34.0
+margin_right = 288.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="Divider2" type="HSeparator" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_top = 134.0
+margin_right = 288.0
+margin_bottom = 150.0
+
+[node name="DialogueLabel" type="Label" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_top = 166.0
+margin_right = 288.0
+margin_bottom = 184.0
+text = "Dialogue Settings"
+align = 1
+
+[node name="DialogueHBox" type="HBoxContainer" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_top = 200.0
+margin_right = 288.0
+margin_bottom = 234.0
+
+[node name="OptionButton" type="OptionButton" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings/DialogueHBox"]
+margin_right = 136.0
+margin_bottom = 34.0
+hint_tooltip = "Dialogue mode."
+size_flags_horizontal = 3
+text = "Typewriter"
+items = [ "Typewriter", null, false, 0, null, "Instant", null, false, 1, null ]
+selected = 0
+
+[node name="DialogueRate" type="SpinBox" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings/DialogueHBox"]
+margin_left = 152.0
+margin_right = 288.0
+margin_bottom = 34.0
+hint_tooltip = "The rate of the typewriter effect in dialogue. Measured in seconds per letter."
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.05
+
+[node name="Divider3" type="HSeparator" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_top = 250.0
+margin_right = 288.0
+margin_bottom = 266.0
+
+[node name="Restart" type="Button" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_top = 282.0
+margin_right = 288.0
+margin_bottom = 316.0
+text = "delete saved data...?"
+
+[node name="Confirmation" type="ConfirmationDialog" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings/Restart"]
+margin_top = 94.0
+margin_right = 400.0
+margin_bottom = 234.0
+rect_min_size = Vector2( 400, 140 )
+popup_exclusive = true
+window_title = ""
+dialog_text = "Are you sure?"
+
+[node name="Divider4" type="HSeparator" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_top = 332.0
+margin_right = 288.0
+margin_bottom = 348.0
+
+[node name="Back" type="Button" parent="Separator/Buttons/Margins/Centerer/Tabs/Settings"]
+margin_top = 364.0
+margin_right = 288.0
+margin_bottom = 398.0
+text = "return...?"
+
+[node name="Name" type="TabContainer" parent="Separator/Buttons/Margins/Centerer/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_type_variation = "HiddenTabContainer"
+tabs_visible = false
+
+[node name="Input" type="VBoxContainer" parent="Separator/Buttons/Margins/Centerer/Tabs/Name"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Separator/Buttons/Margins/Centerer/Tabs/Name/Input"]
+margin_top = 197.0
+margin_right = 250.0
+margin_bottom = 220.0
+align = 1
+placeholder_text = "Then enter your name."
+placeholder_alpha = 0.5
+caret_blink = true
+
+[node name="Confirmation" type="VBoxContainer" parent="Separator/Buttons/Margins/Centerer/Tabs/Name"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_type_variation = "SpacedVBoxContainer"
+alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="Separator/Buttons/Margins/Centerer/Tabs/Name/Confirmation"]
+margin_top = 175.0
+margin_right = 250.0
+margin_bottom = 205.0
+theme_type_variation = "HiddenRichTextLabel"
+bbcode_enabled = true
+fit_content_height = true
+
+[node name="Buttons" type="HBoxContainer" parent="Separator/Buttons/Margins/Centerer/Tabs/Name/Confirmation"]
+margin_top = 213.0
+margin_right = 250.0
+margin_bottom = 243.0
+
+[node name="Yes" type="Button" parent="Separator/Buttons/Margins/Centerer/Tabs/Name/Confirmation/Buttons"]
+margin_right = 121.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+text = "yes"
+
+[node name="No" type="Button" parent="Separator/Buttons/Margins/Centerer/Tabs/Name/Confirmation/Buttons"]
+margin_left = 129.0
+margin_right = 250.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+text = "no"
+
+[node name="OK" type="Label" parent="Separator/Buttons/Margins/Centerer/Tabs/Name"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Then so it shall be."
+align = 1
+valign = 1
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 10 )
+anims/fade_out = SubResource( 11 )
+
+[connection signal="pressed" from="Separator/Buttons/Margins/Centerer/Tabs/Default/Play" to="." method="play"]
+[connection signal="pressed" from="Separator/Buttons/Margins/Centerer/Tabs/Default/Settings" to="." method="open_settings"]
+[connection signal="pressed" from="Separator/Buttons/Margins/Centerer/Tabs/Default/Quit" to="." method="quit"]
+[connection signal="pressed" from="Separator/Buttons/Margins/Centerer/Tabs/Default/Battle" to="." method="switch_to_battle"]
+[connection signal="value_changed" from="Separator/Buttons/Margins/Centerer/Tabs/Settings/Options/VolumeSlider" to="." method="set_volume"]
+[connection signal="value_changed" from="Separator/Buttons/Margins/Centerer/Tabs/Settings/Options/SaturationSlider" to="." method="set_saturation"]
+[connection signal="item_selected" from="Separator/Buttons/Margins/Centerer/Tabs/Settings/DialogueHBox/OptionButton" to="." method="set_dialogue_mode"]
+[connection signal="value_changed" from="Separator/Buttons/Margins/Centerer/Tabs/Settings/DialogueHBox/DialogueRate" to="." method="set_dialogue_rate"]
+[connection signal="pressed" from="Separator/Buttons/Margins/Centerer/Tabs/Settings/Restart" to="." method="request_delete_data"]
+[connection signal="confirmed" from="Separator/Buttons/Margins/Centerer/Tabs/Settings/Restart/Confirmation" to="." method="delete_data"]
+[connection signal="pressed" from="Separator/Buttons/Margins/Centerer/Tabs/Settings/Back" to="." method="close_settings"]
+[connection signal="text_entered" from="Separator/Buttons/Margins/Centerer/Tabs/Name/Input/LineEdit" to="." method="on_name_input"]
+[connection signal="pressed" from="Separator/Buttons/Margins/Centerer/Tabs/Name/Confirmation/Buttons/Yes" to="." method="on_name_confirm"]
+[connection signal="pressed" from="Separator/Buttons/Margins/Centerer/Tabs/Name/Confirmation/Buttons/No" to="." method="on_name_denied"]

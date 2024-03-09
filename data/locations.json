@@ -1,0 +1,11 @@
+{
+	"puddle": {
+		"intro": ["your first sensation: your head is throbbing.", "you are freezing and sopping wet. you have no idea where you are."],
+		"music": "wind",
+		"actions": {
+			Vector2(400, 300): {
+				"roll over": "move:puddle_sky"
+			}
+		}
+	}
+}

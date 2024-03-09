@@ -1,0 +1,56 @@
+{
+	"puddle": {
+		"intro": ["your first sensation: your head is throbbing.", "you are freezing and sopping wet. you have no idea where you are."],
+		"music": "wind",
+		"actions": {
+			"roll over": {"move": "puddle_sky"},
+			"look around": {"dialogue": ["you are lying in a puddle. puddles, typically, are not things most people like lying in, so this strikes you as strange.", "the leaves and pavement around you are a saturated purple. this also strikes you as strange. you consider briefly the possibility that you have developed colorblindness.", "but the reflected sky is the color of sickness. this, at least, is familiar. it roots you back to earth.", "you should really get up."]},
+		},
+	},
+	"puddle_sky": {
+		"intro": ["you roll over onto your back. a groan escapes your lips.", "the sky is... blinding.", "ribbons of searing color ripple across it -- all bright crimsons and purples and chartreuses -- cutting into your poor, poor eyeballs.", "it is like those oily puddles of water from back home. you can just faintly remember them over your throbbing migraine.", "the ones near the gas station that a smaller you would always stop to marvel at.", "man.", "what happened to marvelling, huh?", "...", "the sky does nothing to help your headache. it is less familiar than you thought, but just as indifferent as always."],
+		"music": "city_spectres",
+		"actions": {
+			"get up": {"move": "street_1"},
+		},
+	},
+	"street_1": {
+		"intro": ["you get up, knees aching."],
+		"actions": {
+			"walk": {"move": "street_2"},
+		},
+	},
+	"street_2": {
+		"actions": {
+			"walk": {"move": "street_3"},
+			"go back": {"move": "street_1"},
+		},
+	},
+	"street_3": {
+		"actions": {
+			"walk": {"move": "street_4"},
+			"go back": {"move": "street_2"},
+		},
+	},
+	"street_4": {
+		"actions": {
+			"walk": {"move": "strait"},
+			"go back": {"move": "street_3"},
+		},
+	},
+	"strait": {
+		"objects": {
+			"whiskers": "res://assets/strait_whiskers.png"
+		},
+		"actions": {
+			"greet": {"dialogue": ["text text text"]},
+			"go back": {"move": "street_4"},
+		},
+	},
+	"404": {
+		"intro": ["woops! how'd you end up here?"],
+		"actions": {
+			"go back": "MOVE:puddle",
+		},
+	},
+}

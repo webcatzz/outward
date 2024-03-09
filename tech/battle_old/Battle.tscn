@@ -1,0 +1,690 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://assets/battle/buttons/act_pressed.png" type="Texture" id=1]
+[ext_resource path="res://tech/battle_old/Battle.gd" type="Script" id=2]
+[ext_resource path="res://assets/battle/buttons/atk_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/battle/buttons/item.png" type="Texture" id=4]
+[ext_resource path="res://tech/battle_old/battle.tres" type="Theme" id=5]
+[ext_resource path="res://assets/battle/buttons/act.png" type="Texture" id=6]
+[ext_resource path="res://assets/battle/buttons/atk_pressed.png" type="Texture" id=7]
+[ext_resource path="res://tech/battle_old/Dialogue.gd" type="Script" id=8]
+[ext_resource path="res://assets/battle/buttons/run_hover.png" type="Texture" id=9]
+[ext_resource path="res://assets/battle/buttons/act_hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/battle/buttons/item_hover.png" type="Texture" id=11]
+[ext_resource path="res://assets/battle/buttons/atk.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui/next.png" type="Texture" id=13]
+[ext_resource path="res://assets/battle/buttons/run.png" type="Texture" id=14]
+[ext_resource path="res://assets/battle/buttons/run_pressed.png" type="Texture" id=15]
+[ext_resource path="res://assets/battle/buttons/item_pressed.png" type="Texture" id=16]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 490, 54 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "float"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 490, 54 ), Vector2( 490, 50 ), Vector2( 490, 54 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -56 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Buttons:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "panel_open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16, 40 ), Vector2( 16, -56 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Buttons:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Battle" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )
+
+[node name="Margins" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Squarer" type="AspectRatioContainer" parent="Margins"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 784.0
+margin_bottom = 584.0
+
+[node name="Rectangler" type="AspectRatioContainer" parent="Margins/Squarer"]
+margin_left = 100.0
+margin_right = 668.0
+margin_bottom = 568.0
+ratio = 1.5
+
+[node name="Container" type="VBoxContainer" parent="Margins/Squarer/Rectangler"]
+margin_top = 94.6667
+margin_right = 568.0
+margin_bottom = 473.333
+alignment = 1
+
+[node name="Resolve" type="PanelContainer" parent="Margins/Squarer/Rectangler/Container"]
+margin_right = 568.0
+margin_bottom = 14.0
+
+[node name="Meter" type="ProgressBar" parent="Margins/Squarer/Rectangler/Container/Resolve"]
+margin_right = 568.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="Margins/Squarer/Rectangler/Container/Resolve"]
+margin_left = 256.0
+margin_right = 312.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "resolve"
+
+[node name="Display" type="PanelContainer" parent="Margins/Squarer/Rectangler/Container"]
+margin_top = 22.0
+margin_right = 568.0
+margin_bottom = 330.0
+size_flags_vertical = 3
+
+[node name="Background" type="ColorRect" parent="Margins/Squarer/Rectangler/Container/Display"]
+show_behind_parent = true
+margin_right = 568.0
+margin_bottom = 308.0
+size_flags_vertical = 3
+color = Color( 0.25, 0.25, 0.25, 1 )
+
+[node name="Foreground" type="MarginContainer" parent="Margins/Squarer/Rectangler/Container/Display"]
+margin_right = 568.0
+margin_bottom = 308.0
+
+[node name="Separator" type="HBoxContainer" parent="Margins/Squarer/Rectangler/Container/Display/Foreground"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 552.0
+margin_bottom = 292.0
+custom_constants/separation = 128
+alignment = 1
+
+[node name="Controls" type="Control" parent="Margins/Squarer/Rectangler/Container"]
+margin_top = 338.0
+margin_right = 568.0
+margin_bottom = 378.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Buttons" type="HBoxContainer" parent="Margins/Squarer/Rectangler/Container/Controls"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -96.0
+
+[node name="Attack" type="TextureButton" parent="Margins/Squarer/Rectangler/Container/Controls/Buttons"]
+margin_left = 10.0
+margin_top = 1.0
+margin_right = 126.0
+margin_bottom = 94.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../Act")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../Act")
+focus_previous = NodePath(".")
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 3 )
+
+[node name="Act" type="TextureButton" parent="Margins/Squarer/Rectangler/Container/Controls/Buttons"]
+margin_left = 148.0
+margin_top = 10.0
+margin_right = 276.0
+margin_bottom = 86.0
+focus_neighbour_left = NodePath("../Attack")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../Item")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../Item")
+focus_previous = NodePath("../Attack")
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 10 )
+
+[node name="Item" type="TextureButton" parent="Margins/Squarer/Rectangler/Container/Controls/Buttons"]
+margin_left = 309.0
+margin_top = 3.0
+margin_right = 403.0
+margin_bottom = 92.0
+focus_neighbour_left = NodePath("../Act")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../Run")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../Run")
+focus_previous = NodePath("../Act")
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 11 )
+
+[node name="Run" type="TextureButton" parent="Margins/Squarer/Rectangler/Container/Controls/Buttons"]
+margin_left = 449.0
+margin_top = 18.0
+margin_right = 550.0
+margin_bottom = 78.0
+focus_neighbour_left = NodePath("../Item")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 9 )
+
+[node name="Panel" type="TabContainer" parent="Margins/Squarer/Rectangler/Container/Controls"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -96.0
+margin_right = 552.0
+tabs_visible = false
+
+[node name="Dialogue" type="RichTextLabel" parent="Margins/Squarer/Rectangler/Container/Controls/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+focus_mode = 2
+custom_styles/normal = SubResource( 1 )
+bbcode_enabled = true
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Dialogue"]
+
+[node name="Next" type="TextureRect" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Dialogue"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -582.0
+margin_top = -10.0
+margin_right = -568.0
+margin_bottom = -9.91821e-05
+texture = ExtResource( 13 )
+stretch_mode = 6
+
+[node name="Animator" type="AnimationPlayer" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Dialogue/Next"]
+autoplay = "float"
+anims/RESET = SubResource( 9 )
+anims/float = SubResource( 10 )
+
+[node name="Attack" type="CenterContainer" parent="Margins/Squarer/Rectangler/Container/Controls/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="Label" type="Label" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Attack"]
+margin_left = 468.0
+margin_top = 25.0
+margin_right = 604.0
+margin_bottom = 39.0
+custom_colors/font_color = Color( 0.25, 0.25, 0.25, 1 )
+text = "choose a target..."
+
+[node name="Actions" type="GridContainer" parent="Margins/Squarer/Rectangler/Container/Controls/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+columns = 3
+
+[node name="Action1" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Actions"]
+margin_left = 52.0
+margin_top = 2.0
+margin_right = 114.0
+margin_bottom = 16.0
+focus_neighbour_left = NodePath("../Action9")
+focus_neighbour_top = NodePath("../Action7")
+focus_neighbour_right = NodePath("../Action2")
+focus_neighbour_bottom = NodePath("../Action4")
+focus_next = NodePath("../Action2")
+focus_previous = NodePath("../Action9")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "action 1"
+
+[node name="Action2" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Actions"]
+margin_left = 221.0
+margin_top = 2.0
+margin_right = 283.0
+margin_bottom = 16.0
+focus_neighbour_left = NodePath("../Action1")
+focus_neighbour_top = NodePath("../Action8")
+focus_neighbour_right = NodePath("../Action3")
+focus_neighbour_bottom = NodePath("../Action5")
+focus_next = NodePath("../Action3")
+focus_previous = NodePath("../Action1")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "action 2"
+
+[node name="Action3" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Actions"]
+margin_left = 390.0
+margin_top = 2.0
+margin_right = 452.0
+margin_bottom = 16.0
+focus_neighbour_left = NodePath("../Action2")
+focus_neighbour_top = NodePath("../Action9")
+focus_neighbour_right = NodePath("../Action4")
+focus_neighbour_bottom = NodePath("../Action6")
+focus_next = NodePath("../Action4")
+focus_previous = NodePath("../Action2")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "action 3"
+
+[node name="Action4" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Actions"]
+margin_left = 52.0
+margin_top = 25.0
+margin_right = 114.0
+margin_bottom = 39.0
+focus_neighbour_left = NodePath("../Action3")
+focus_neighbour_top = NodePath("../Action1")
+focus_neighbour_right = NodePath("../Action5")
+focus_neighbour_bottom = NodePath("../Action7")
+focus_next = NodePath("../Action5")
+focus_previous = NodePath("../Action3")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "action 4"
+
+[node name="Action5" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Actions"]
+margin_left = 221.0
+margin_top = 25.0
+margin_right = 283.0
+margin_bottom = 39.0
+focus_neighbour_left = NodePath("../Action4")
+focus_neighbour_top = NodePath("../Action2")
+focus_neighbour_right = NodePath("../Action6")
+focus_neighbour_bottom = NodePath("../Action8")
+focus_next = NodePath("../Action6")
+focus_previous = NodePath("../Action4")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "action 5"
+
+[node name="Action6" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Actions"]
+margin_left = 390.0
+margin_top = 25.0
+margin_right = 452.0
+margin_bottom = 39.0
+focus_neighbour_left = NodePath("../Action5")
+focus_neighbour_top = NodePath("../Action3")
+focus_neighbour_right = NodePath("../Action7")
+focus_neighbour_bottom = NodePath("../Action9")
+focus_next = NodePath("../Action7")
+focus_previous = NodePath("../Action5")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "action 6"
+
+[node name="Action7" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Actions"]
+margin_left = 52.0
+margin_top = 48.0
+margin_right = 114.0
+margin_bottom = 62.0
+focus_neighbour_left = NodePath("../Action6")
+focus_neighbour_top = NodePath("../Action4")
+focus_neighbour_right = NodePath("../Action8")
+focus_neighbour_bottom = NodePath("../Action1")
+focus_next = NodePath("../Action8")
+focus_previous = NodePath("../Action6")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "action 7"
+
+[node name="Action8" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Actions"]
+margin_left = 221.0
+margin_top = 48.0
+margin_right = 283.0
+margin_bottom = 62.0
+focus_neighbour_left = NodePath("../Action7")
+focus_neighbour_top = NodePath("../Action5")
+focus_neighbour_right = NodePath("../Action9")
+focus_neighbour_bottom = NodePath("../Action2")
+focus_next = NodePath("../Action9")
+focus_previous = NodePath("../Action7")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "action 8"
+
+[node name="Action9" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Actions"]
+margin_left = 390.0
+margin_top = 48.0
+margin_right = 452.0
+margin_bottom = 62.0
+focus_neighbour_left = NodePath("../Action8")
+focus_neighbour_top = NodePath("../Action6")
+focus_neighbour_right = NodePath("../Action1")
+focus_neighbour_bottom = NodePath("../Action3")
+focus_next = NodePath("../Action1")
+focus_previous = NodePath("../Action8")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "action 9"
+
+[node name="Items" type="GridContainer" parent="Margins/Squarer/Rectangler/Container/Controls/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+columns = 3
+
+[node name="Item1" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Items"]
+margin_left = 60.0
+margin_top = 2.0
+margin_right = 106.0
+margin_bottom = 16.0
+focus_neighbour_left = NodePath("../Item9")
+focus_neighbour_top = NodePath("../Item7")
+focus_neighbour_right = NodePath("../Item2")
+focus_neighbour_bottom = NodePath("../Item4")
+focus_next = NodePath("../Item2")
+focus_previous = NodePath("../Item9")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "item 1"
+
+[node name="Item2" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Items"]
+margin_left = 229.0
+margin_top = 2.0
+margin_right = 275.0
+margin_bottom = 16.0
+focus_neighbour_left = NodePath("../Item1")
+focus_neighbour_top = NodePath("../Item8")
+focus_neighbour_right = NodePath("../Item3")
+focus_neighbour_bottom = NodePath("../Item5")
+focus_next = NodePath("../Item3")
+focus_previous = NodePath("../Item1")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "item 2"
+
+[node name="Item3" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Items"]
+margin_left = 398.0
+margin_top = 2.0
+margin_right = 444.0
+margin_bottom = 16.0
+focus_neighbour_left = NodePath("../Item2")
+focus_neighbour_top = NodePath("../Item6")
+focus_neighbour_right = NodePath("../Item4")
+focus_neighbour_bottom = NodePath("../Item9")
+focus_next = NodePath("../Item4")
+focus_previous = NodePath("../Item2")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "item 3"
+
+[node name="Item4" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Items"]
+margin_left = 60.0
+margin_top = 25.0
+margin_right = 106.0
+margin_bottom = 39.0
+focus_neighbour_left = NodePath("../Item3")
+focus_neighbour_top = NodePath("../Item1")
+focus_neighbour_right = NodePath("../Item5")
+focus_neighbour_bottom = NodePath("../Item7")
+focus_next = NodePath("../Item5")
+focus_previous = NodePath("../Item3")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "item 4"
+
+[node name="Item5" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Items"]
+margin_left = 229.0
+margin_top = 25.0
+margin_right = 275.0
+margin_bottom = 39.0
+focus_neighbour_left = NodePath("../Item4")
+focus_neighbour_top = NodePath("../Item2")
+focus_neighbour_right = NodePath("../Item6")
+focus_neighbour_bottom = NodePath("../Item8")
+focus_next = NodePath("../Item6")
+focus_previous = NodePath("../Item4")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "item 5"
+
+[node name="Item6" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Items"]
+margin_left = 398.0
+margin_top = 25.0
+margin_right = 444.0
+margin_bottom = 39.0
+focus_neighbour_left = NodePath("../Item5")
+focus_neighbour_top = NodePath("../Item3")
+focus_neighbour_right = NodePath("../Item7")
+focus_neighbour_bottom = NodePath("../Item9")
+focus_next = NodePath("../Item7")
+focus_previous = NodePath("../Item5")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "item 6"
+
+[node name="Item7" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Items"]
+margin_left = 60.0
+margin_top = 48.0
+margin_right = 106.0
+margin_bottom = 62.0
+focus_neighbour_left = NodePath("../Item6")
+focus_neighbour_top = NodePath("../Item4")
+focus_neighbour_right = NodePath("../Item8")
+focus_neighbour_bottom = NodePath("../Item1")
+focus_next = NodePath("../Item8")
+focus_previous = NodePath("../Item6")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "item 7"
+
+[node name="Item8" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Items"]
+margin_left = 229.0
+margin_top = 48.0
+margin_right = 275.0
+margin_bottom = 62.0
+focus_neighbour_left = NodePath("../Item7")
+focus_neighbour_top = NodePath("../Item5")
+focus_neighbour_right = NodePath("../Item9")
+focus_neighbour_bottom = NodePath("../Item2")
+focus_next = NodePath("../Item9")
+focus_previous = NodePath("../Item7")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "item 8"
+
+[node name="Item9" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Items"]
+margin_left = 398.0
+margin_top = 48.0
+margin_right = 444.0
+margin_bottom = 62.0
+focus_neighbour_left = NodePath("../Item8")
+focus_neighbour_top = NodePath("../Item6")
+focus_neighbour_right = NodePath("../Item1")
+focus_neighbour_bottom = NodePath("../Item3")
+focus_next = NodePath("../Item1")
+focus_previous = NodePath("../Item8")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "item 9"
+
+[node name="Running" type="HBoxContainer" parent="Margins/Squarer/Rectangler/Container/Controls/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="Yes" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Running"]
+margin_left = 120.0
+margin_top = 33.0
+margin_right = 144.0
+margin_bottom = 47.0
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../No")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../No")
+focus_previous = NodePath(".")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "yes"
+
+[node name="No" type="Button" parent="Margins/Squarer/Rectangler/Container/Controls/Panel/Running"]
+margin_left = 396.0
+margin_top = 33.0
+margin_right = 412.0
+margin_bottom = 47.0
+focus_neighbour_left = NodePath("../Yes")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath("../Yes")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "no"
+
+[node name="Animator" type="AnimationPlayer" parent="Margins/Squarer/Rectangler/Container/Controls"]
+anims/RESET = SubResource( 11 )
+anims/panel_open = SubResource( 13 )
+
+[connection signal="pressed" from="Margins/Squarer/Rectangler/Container/Controls/Buttons/Attack" to="." method="pressed" binds= [ "attack" ]]
+[connection signal="pressed" from="Margins/Squarer/Rectangler/Container/Controls/Buttons/Act" to="." method="pressed" binds= [ "act" ]]
+[connection signal="pressed" from="Margins/Squarer/Rectangler/Container/Controls/Buttons/Item" to="." method="pressed" binds= [ "item" ]]
+[connection signal="pressed" from="Margins/Squarer/Rectangler/Container/Controls/Buttons/Run" to="." method="pressed" binds= [ "run" ]]
+[connection signal="pressed" from="Margins/Squarer/Rectangler/Container/Controls/Panel/Running/Yes" to="." method="run"]

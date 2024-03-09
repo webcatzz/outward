@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/shattering-glass.mp3-52a89bc87157b87c5e10e86c3cb5133f.mp3str"
+
+[deps]
+
+source_file="res://music/shattering-glass.mp3"
+dest_files=[ "res://.import/shattering-glass.mp3-52a89bc87157b87c5e10e86c3cb5133f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

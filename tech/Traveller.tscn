@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://tech/theme.tres" type="Theme" id=1]
+[ext_resource path="res://tech/Traveller.gd" type="Script" id=2]
+
+[node name="Root" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )
+
+[node name="Container" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -300.0
+margin_right = 400.0
+margin_bottom = 300.0
+
+[node name="Separator" type="VBoxContainer" parent="Container"]
+margin_left = 262.0
+margin_right = 538.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 276, 0 )
+size_flags_horizontal = 4
+custom_constants/separation = 32
+alignment = 1
+
+[node name="Label" type="Label" parent="Container/Separator"]
+margin_top = 230.0
+margin_right = 276.0
+margin_bottom = 248.0
+custom_colors/font_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+text = "Enter your destination..."
+align = 1
+
+[node name="Name" type="LineEdit" parent="Container/Separator"]
+margin_top = 280.0
+margin_right = 276.0
+margin_bottom = 303.0
+align = 1
+
+[node name="Reset" type="CheckBox" parent="Container/Separator"]
+margin_left = 36.0
+margin_top = 335.0
+margin_right = 240.0
+margin_bottom = 369.0
+size_flags_horizontal = 4
+text = "reset visited tag"
+
+[connection signal="text_entered" from="Container/Separator/Name" to="." method="on_text_entered"]

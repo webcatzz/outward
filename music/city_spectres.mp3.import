@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/city_spectres.mp3-6185be5756040e3b331bd86137694b3d.mp3str"
+
+[deps]
+
+source_file="res://music/city_spectres.mp3"
+dest_files=[ "res://.import/city_spectres.mp3-6185be5756040e3b331bd86137694b3d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
